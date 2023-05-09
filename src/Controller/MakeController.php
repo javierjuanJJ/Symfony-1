@@ -15,12 +15,14 @@ class MakeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        return new Response(content: '<h1>Welcome freeCodeCamp!</h1>');
+        return $this->render('home/home.html.twig');
     }
     #[Route('/custom/{name}', name: 'custom')]
     public function custom(Request $request): Response
     {
-        dump($request);
-        return new Response(content: '<h1>Custom page!</h1>');
+        $name = $request->get('name');
+     return $this->render('home/custom.html.twig',[
+            'name' => $name
+        ]);
     }
 }
