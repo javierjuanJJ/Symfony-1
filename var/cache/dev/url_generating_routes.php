@@ -18,4 +18,5 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\MakeController::index'], [], [['text', '/']], [], [], []],
     'custom' => [['name'], ['_controller' => 'App\\Controller\\MakeController::custom'], [], [['variable', '/', '[^/]++', 'name', true], ['text', '/custom']], [], [], []],
+    'app_post' => [[], ['_controller' => 'App\\Controller\\PostController::index'], [], [['text', '/post']], [], [], []],
 ];
