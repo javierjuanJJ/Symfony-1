@@ -18,6 +18,9 @@
                 <td>
                     <a href="{{ path('post.show', {id: post.id})  }}">{{ post.title }}</a>
                 </td>
+                <td>
+                    <a class="text-danger" href="{{ path('post.delete', {id: post.id})  }}">Delete post</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
