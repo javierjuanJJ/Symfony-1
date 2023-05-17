@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +14,14 @@ use Doctrine\Persistence\ManagerRegistry;
 class PostController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(PostRepository $postRepository): Response
     {
-        return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
+        $posts = $postRepository->findAll();
+
+
+
+        return $this->render('home/home.html.twig', [
+            'posts' => $posts,
         ]);
     }
     #[Route('/create', name: 'create')]
@@ -34,6 +39,17 @@ class PostController extends AbstractController
 
         return new Response('Post was created');
 
+    }
+    #[Route('/show/{id}', name: 'show')]
+    public function show($id, PostRepository $postRepository)
+    {
+        $post = $postRepository->find($id);
+
+        dump($post);
+        die();
+//        return $this->render('post/show.html.twig',[
+//            'post'=> $post
+//        ]);
     }
     
 }
