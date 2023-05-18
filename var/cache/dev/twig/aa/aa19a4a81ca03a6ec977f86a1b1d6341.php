@@ -65,7 +65,51 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Welcome</h1>
+        echo "    <h2>List of all posts</h2>
+    <table class=\"table table-striped\">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+        </tr>
+        </thead>
+        <tbody>
+        ";
+        // line 13
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 13, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
+            // line 14
+            echo "            <tr>
+                <td>
+                    ";
+            // line 16
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 16), "html", null, true);
+            echo "
+                </td>
+                <td>
+                    <a href=\"";
+            // line 19
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.show", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 19)]), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "title", [], "any", false, false, false, 19), "html", null, true);
+            echo "</a>
+                </td>
+                <td>
+                    <a class=\"text-danger\" href=\"";
+            // line 22
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.delete", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 22)]), "html", null, true);
+            echo "\">Delete post</a>
+                </td>
+            </tr>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 26
+        echo "        </tbody>
+    </table>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -87,7 +131,7 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
 
     public function getDebugInfo()
     {
-        return array (  68 => 4,  58 => 3,  35 => 1,);
+        return array (  111 => 26,  101 => 22,  93 => 19,  87 => 16,  83 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -95,7 +139,30 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         return new Source("{% extends \"base.html.twig\" %}
 
 {% block body %}
-    <h1>Welcome</h1>
+    <h2>List of all posts</h2>
+    <table class=\"table table-striped\">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>
+                    {{ post.id }}
+                </td>
+                <td>
+                    <a href=\"{{ path('post.show', {id: post.id})  }}\">{{ post.title }}</a>
+                </td>
+                <td>
+                    <a class=\"text-danger\" href=\"{{ path('post.delete', {id: post.id})  }}\">Delete post</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 
 ", "home/home.html.twig", "/home/jj/sfcourse/sfcourse/templates/home/home.html.twig");

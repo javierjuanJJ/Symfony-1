@@ -20,4 +20,6 @@ return [
     'custom' => [['name'], ['_controller' => 'App\\Controller\\MakeController::custom'], [], [['variable', '/', '[^/]++', 'name', true], ['text', '/custom']], [], [], []],
     'post.index' => [[], ['_controller' => 'App\\Controller\\PostController::index'], [], [['text', '/post/']], [], [], []],
     'post.create' => [[], ['_controller' => 'App\\Controller\\PostController::create'], [], [['text', '/post/create']], [], [], []],
+    'post.show' => [['id'], ['_controller' => 'App\\Controller\\PostController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post/show']], [], [], []],
+    'post.delete' => [['id'], ['_controller' => 'App\\Controller\\PostController::remove'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post/delete']], [], [], []],
 ];

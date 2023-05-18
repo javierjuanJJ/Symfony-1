@@ -36,6 +36,10 @@ return [
                     .')'
                 .')'
                 .'|/custom/([^/]++)(*:185)'
+                .'|/post/(?'
+                    .'|show/([^/]++)(*:215)'
+                    .'|delete/([^/]++)(*:238)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -46,8 +50,10 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        185 => [
-            [['_route' => 'custom', '_controller' => 'App\\Controller\\MakeController::custom'], ['name'], null, null, false, true, null],
+        185 => [[['_route' => 'custom', '_controller' => 'App\\Controller\\MakeController::custom'], ['name'], null, null, false, true, null]],
+        215 => [[['_route' => 'post.show', '_controller' => 'App\\Controller\\PostController::show'], ['id'], null, null, false, true, null]],
+        238 => [
+            [['_route' => 'post.delete', '_controller' => 'App\\Controller\\PostController::remove'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
