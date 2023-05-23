@@ -30,11 +30,21 @@ class PostController extends AbstractController
 
         // $post->setTitle('This is going to be a title');
         $form = $this->createForm(PostType::class, $post);
-       $em = $doctrine2->getManager();
-//
-//        $em->persist($post);
-//
-//        $em->flush();
+
+        $form->handleRequest($request);
+        //$form->getErrors();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $doctrine2->getManager();
+
+            $em->persist($post);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('post.index'));
+        }
+
+
 
         return $this->render('post/create.html.twig',[
             'form' => $form->createView()
