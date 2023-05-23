@@ -65,7 +65,29 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h2>List of all posts</h2>
+        echo "
+    ";
+        // line 5
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 5, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 5));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 6
+            echo "
+        <div class=\"alert alert-success\">
+            ";
+            // line 8
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+        </div>
+
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 12
+        echo "
+    <h2>List of all posts</h2>
     <table class=\"table table-striped\">
         <thead>
         <tr>
@@ -75,30 +97,30 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         </thead>
         <tbody>
         ";
-        // line 13
+        // line 22
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 13, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 22, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
-            // line 14
+            // line 23
             echo "            <tr>
                 <td>
                     ";
-            // line 16
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 16), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 25), "html", null, true);
             echo "
                 </td>
                 <td>
                     <a href=\"";
-            // line 19
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.show", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 19)]), "html", null, true);
+            // line 28
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.show", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 28)]), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "title", [], "any", false, false, false, 19), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "title", [], "any", false, false, false, 28), "html", null, true);
             echo "</a>
                 </td>
                 <td>
                     <a class=\"text-danger\" href=\"";
-            // line 22
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.delete", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 22)]), "html", null, true);
+            // line 31
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post.delete", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 31)]), "html", null, true);
             echo "\">Delete post</a>
                 </td>
             </tr>
@@ -107,7 +129,7 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 26
+        // line 35
         echo "        </tbody>
     </table>
 ";
@@ -131,7 +153,7 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
 
     public function getDebugInfo()
     {
-        return array (  111 => 26,  101 => 22,  93 => 19,  87 => 16,  83 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  133 => 35,  123 => 31,  115 => 28,  109 => 25,  105 => 23,  101 => 22,  89 => 12,  79 => 8,  75 => 6,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -139,6 +161,15 @@ class __TwigTemplate_4a577d026c5b75c6edf75fd4389eeb34 extends Template
         return new Source("{% extends \"base.html.twig\" %}
 
 {% block body %}
+
+    {% for message in app.flashes('success') %}
+
+        <div class=\"alert alert-success\">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
     <h2>List of all posts</h2>
     <table class=\"table table-striped\">
         <thead>
