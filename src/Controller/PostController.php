@@ -37,9 +37,23 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $doctrine2->getManager();
 
-            $em->persist($post);
+            $file = $request->files->get('post')['attachment'];
 
-            $em->flush();
+            if ($file){
+                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+                $file->move(
+                    $this->getParameter('uploads_dir'),
+                    $filename
+                );
+
+                $post->setImage($filename);
+                $em->persist($post);
+
+                $em->flush();
+
+            }
+
+
 
             return $this->redirect($this->generateUrl('post.index'));
         }
