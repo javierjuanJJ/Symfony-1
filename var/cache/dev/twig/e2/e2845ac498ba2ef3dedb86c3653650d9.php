@@ -92,13 +92,26 @@ class __TwigTemplate_889f9b7f938eac54a1a70c0f5a95a815 extends Template
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home", ["name" => "jj"]);
         echo "\">Disabled</a>
             </li>
-        </ul>
+            ";
+        // line 38
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("PUBLIC_ACCESS")) {
+            // line 39
+            echo "                <li class=\"nav-item float-right\">
+                    <a class=\"nav-link\" href=\"";
+            // line 40
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\">Logout</a>
+                </li>
+            ";
+        }
+        // line 43
+        echo "        </ul>
     </div>
 </nav>
 ";
-        // line 41
+        // line 46
         $this->displayBlock('body', $context, $blocks);
-        // line 42
+        // line 47
         echo "</body>
 </html>
 ";
@@ -175,7 +188,7 @@ class __TwigTemplate_889f9b7f938eac54a1a70c0f5a95a815 extends Template
 
     }
 
-    // line 41
+    // line 46
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -205,7 +218,7 @@ class __TwigTemplate_889f9b7f938eac54a1a70c0f5a95a815 extends Template
 
     public function getDebugInfo()
     {
-        return array (  179 => 41,  166 => 14,  156 => 13,  143 => 10,  133 => 9,  114 => 5,  102 => 42,  100 => 41,  92 => 36,  86 => 33,  67 => 16,  65 => 13,  62 => 12,  59 => 9,  53 => 5,  47 => 1,);
+        return array (  192 => 46,  179 => 14,  169 => 13,  156 => 10,  146 => 9,  127 => 5,  115 => 47,  113 => 46,  108 => 43,  102 => 40,  99 => 39,  97 => 38,  92 => 36,  86 => 33,  67 => 16,  65 => 13,  62 => 12,  59 => 9,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -247,6 +260,11 @@ class __TwigTemplate_889f9b7f938eac54a1a70c0f5a95a815 extends Template
             <li class=\"nav-item\">
                 <a class=\"nav-link disabled\" href=\"{{ path('home', {name: 'jj'}) }}\">Disabled</a>
             </li>
+            {% if is_granted('PUBLIC_ACCESS') %}
+                <li class=\"nav-item float-right\">
+                    <a class=\"nav-link\" href=\"{{ path('app_logout') }}\">Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
