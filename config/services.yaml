@@ -6,6 +6,7 @@
 parameters:
     locale: 'em'
     uploads_dir: '%kernel.project_dir%/public/uploads/'
+    admin_email: 'admin@gmail.com'
 
 services:
     # default configuration for services in *this* file
@@ -24,3 +25,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Services\:
+      # redundant thanks to _defaults, but value is overridable on each service
+      resource: '../src/Services/'
+      autowire: true
+      arguments: [ "@service_container" ]
+
+
+    App\Services\Notification:
+        arguments: [ $email: "%admin_email%" ]
+
+
+
